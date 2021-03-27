@@ -4,7 +4,7 @@
 
 from model import model
 import time
-import MySQLdb
+import pymysql as MySQLdb
 
 class ArticleModel(model):
     def getMaxId(self):

@@ -3,7 +3,7 @@
 #coding:utf-8
 
 import config
-import MySQLdb
+import pymysql as MySQLdb
 from biz import utils
 
 class model(object):

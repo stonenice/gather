@@ -3,7 +3,7 @@
 
 from model import model
 
-import MySQLdb
+import pymysql as MySQLdb;
 
 class TophotModel(model):
     def __init__(self):
