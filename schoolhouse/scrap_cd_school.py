@@ -7,10 +7,16 @@ import pyhocon
 import base64
 import random
 import time
-from loguru import logger
+import logging
 import arc4
 import pymysql
 from pyquery import PyQuery
+
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s %(levelname)s %(filename)s %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    )
+logger = logging.getLogger()
 
 INSERT_SQL_TPL = '''
 replace  into edu_school (school_name,school_type,school_level,school_nature,school_phone,city_name,area_name,
@@ -253,7 +259,7 @@ try:
                 outer_id=x['outer_id'] if 'outer_id' in x else '',
                 school_region=x['school_region'] if 'school_region' in x else ''
             )
-            print(sql)
+            logger.info(sql)
             cursor = connect.cursor()
             cursor.execute(sql)
             connect.commit()

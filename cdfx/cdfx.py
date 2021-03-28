@@ -11,9 +11,11 @@ import os
 import base64
 import pyhocon
 import arc4
-from loguru import logger
+import logging
 import pymysql
 import pymysql.cursors
+
+logging.basicConfig(level=logging.INFO)
 
 cdfx = 'https://www.cdfangxie.com'
 cdfx_infor = '%s/Infor/type/typeid/36.htm' % cdfx
@@ -130,10 +132,10 @@ try:
                 connect.commit()
                 cur.close()
             except Exception as sqlex:
-                logger.error(sqlex)
-        logger.info('page:%d' % p)
+                logging.error(sqlex)
+        logging.info('page:%d' % p)
         p += 1
 
 except Exception as ex:
-    logger.error(ex)
+    logging.error(ex)
     connect.close()
